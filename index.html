@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>星河跨年倒计时</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            position: fixed;
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: #000000;
+            color: #ffffff;
+            touch-action: none;
+            transition: all 0.5s ease;
+        }
+        
+        /* 横屏模式 - 修正比例 */
+        .landscape-mode {
+            width: 100vh;
+            height: 56.25vh; /* 16:9比例调整 */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(90deg);
+            transform-origin: center;
+            background: #000000;
+            display: none;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            padding: 0 20px;
+        }
+        
+        /* 竖屏模式 */
+        .portrait-mode {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        /* 水印样式 */
+        .watermark {
+            position: fixed;
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 14px;
+            z-index: 100;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        
+        /* 竖屏水印位置 */
+        .portrait-watermark-tr {
+            top: 20px;
+            right: 20px;
+            letter-spacing: 8px;
+        }
+        
+        .portrait-watermark-bl {
+            bottom: 20px;
+            left: 20px;
+            letter-spacing: 8px;
+        }
+        
+        /* 横屏水印位置 */
+        .landscape-watermark-top {
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            letter-spacing: 6px;
+        }
+        
+        .landscape-watermark-bottom {
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            letter-spacing: 6px;
+        }
+        
+        /* 时间显示 */
+        .time-display {
+            text-align: center;
+            margin: 10px 0;
+        }
+        
+        .main-time {
+            font-size: 56px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            line-height: 1.2;
+        }
+        
+        .seconds {
+            color: #ff3366;
+            animation: pulse 1s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        
+        /* 横屏时间显示 */
+        .landscape-time {
+            font-size: 48px;
+            margin: 0 20px;
+        }
+        
+        /* 日期显示 */
+        .date-display {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            margin: 10px 0;
+            letter-spacing: 1px;
+        }
+        
+        /* 状态信息 */
+        .status-info {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 15px;
+            min-height: 20px;
+            line-height: 1.4;
+            text-align: center;
+            padding: 0 10px;
+        }
+        
+        /* 距离2026年显示 */
+        .countdown-text {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        /* 横屏布局容器 */
+        .landscape-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .landscape-left {
+            flex: 1;
+            text-align: center;
+            padding: 0 10px;
+        }
+        
+        .landscape-right {
+            flex: 1;
+            text-align: center;
+            padding: 0 10px;
+        }
+        
+        /* 最后10秒全屏倒计时 */
+        .final-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.98);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .final-number {
+            font-size: 200px;
+            font-weight: 900;
+            color: #ff3366;
+            text-shadow: 0 0 30px rgba(255, 51, 102, 1),
+                         0 0 60px rgba(255, 51, 102, 0.8),
+                         0 0 90px rgba(255, 51, 102, 0.6);
+            animation: finalPulse 0.5s infinite alternate;
+        }
+        
+        @keyframes finalPulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+        
+        /* 控制按钮 */
+        .controls {
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 200;
+        }
+        
+        .control-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        
+        .control-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+        
+        /* 视频容器 */
+        .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 2000;
+            display: none;
+        }
+        
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* 谢谢观看页面 */
+        .thanks-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 3000;
+        }
+        
+        .thanks-text {
+            font-size: 48px;
+            color: #fff;
+            text-align: center;
+            animation: fadeInOut 3s forwards;
+        }
+        
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: scale(0.8); }
+            20% { opacity: 1; transform: scale(1); }
+            80% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(1.2); }
+        }
+        
+        /* 祝福语页面 */
+        .blessings-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 4000;
+        }
+        
+        .blessing-text {
+            font-size: 36px;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            animation: blessingFade 3s forwards;
+        }
+        
+        @keyframes blessingFade {
+            0% { opacity: 0; transform: translateY(30px); }
+            20% { opacity: 1; transform: translateY(0); }
+            80% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-30px); }
+        }
+        
+        /* 简洁视图 */
+        .simple-view .portrait-watermark-tr,
+        .simple-view .portrait-watermark-bl,
+        .simple-view .landscape-watermark-top,
+        .simple-view .landscape-watermark-bottom,
+        .simple-view .date-display,
+        .simple-view .status-info,
+        .simple-view .countdown-text {
+            display: none;
+        }
+        
+        .simple-view .main-time {
+            font-size: 64px;
+        }
+        
+        /* 音乐控制 */
+        .music-control {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+        }
+        
+        .music-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .music-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+        
+        /* 星河水印 */
+        .star-river {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 14px;
+            z-index: 100;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- 音乐控制 -->
+    <div class="music-control">
+        <div class="music-btn" id="musicToggle">♪</div>
+    </div>
+    
+    <!-- 星河水印（所有界面左下角） -->
+    <div class="star-river">星河 ★</div>
+    
+    <!-- 竖屏模式 -->
+    <div class="portrait-mode" id="portraitMode">
+        <div class="countdown-text" id="countdownTitle">距离2026还有</div>
+        <div class="time-display">
+            <div class="main-time" id="mainTime">
+                <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds" class="seconds">00</span>
+            </div>
+        </div>
+        <div class="date-display" id="dateDisplay">2025年12月31日 星期三</div>
+        <div class="status-info" id="statusInfo">跨年倒计时进行中...</div>
+    </div>
+    
+    <!-- 横屏模式 -->
+    <div class="landscape-mode" id="landscapeMode">
+        <div class="landscape-container">
+            <div class="landscape-left">
+                <div class="countdown-text">距离2026还有</div>
+                <div class="landscape-time" id="landscapeTime">
+                    <span id="landscapeHours">00</span>:<span id="landscapeMinutes">00</span>:<span id="landscapeSeconds" class="seconds">00</span>
+                </div>
+            </div>
+            <div class="landscape-right">
+                <div class="date-display">2025年12月31日</div>
+                <div class="status-info">跨年倒计时</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 最后10秒倒计时 -->
+    <div class="final-screen" id="finalScreen">
+        <div class="final-number" id="finalNumber">10</div>
+    </div>
+    
+    <!-- 视频播放 -->
+    <div class="video-container" id="videoContainer">
+        <!-- 视频将在JavaScript中动态加载 -->
+    </div>
+    
+    <!-- 谢谢观看 -->
+    <div class="thanks-screen" id="thanksScreen">
+        <div class="thanks-text">谢谢观看</div>
+    </div>
+    
+    <!-- 祝福语 -->
+    <div class="blessings-screen" id="blessingsScreen">
+        <div class="blessing-text" id="blessingText">祝福语加载中...</div>
+    </div>
+    
+    <!-- 控制按钮 -->
+    <div class="controls">
+        <button class="control-btn" id="toggleView">切换视图</button>
+        <button class="control-btn" id="toggleOrientation">切换横竖屏</button>
+    </div>
+    
+    <!-- 背景音乐 -->
+    <audio id="backgroundMusic" loop>
+        <source src="./M500004D7rhs4dNgN8.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // 全局变量
+        let targetDate = new Date('2025-12-31T23:59:59');
+        let countdownInterval;
+        let isLandscape = false;
+        let isSimpleView = false;
+        let isMusicPlaying = true;
+        let finalCountdownStarted = false;
+        let videoPlayed = false;
+        
+        // DOM元素
+        const portraitMode = document.getElementById('portraitMode');
+        const landscapeMode = document.getElementById('landscapeMode');
+        const mainTime = document.getElementById('mainTime');
+        const landscapeTime = document.getElementById('landscapeTime');
+        const finalScreen = document.getElementById('finalScreen');
+        const finalNumber = document.getElementById('finalNumber');
+        const videoContainer = document.getElementById('videoContainer');
+        const thanksScreen = document.getElementById('thanksScreen');
+        const blessingsScreen = document.getElementById('blessingsScreen');
+        const blessingText = document.getElementById('blessingText');
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        
+        // 祝福语列表
+        const blessings = [
+            "✨ 愿新年，胜旧年，万事皆如愿",
+            "🎉 烟火向星辰，所愿皆成真",
+            "🌟 平安喜乐，万事顺遂",
+            "💫 岁岁常欢愉，年年皆胜意",
+            "🎊 家人闲坐，灯火可亲",
+            "❤️ 所遇皆温柔，所得皆所愿",
+            "🌈 前程似锦，未来可期",
+            "🍀 心想事成，好运连连",
+            "🎁 身体健康，万事如意",
+            "🕊️ 岁月静好，温暖如初"
+        ];
+        
+        // 初始化
+        function init() {
+            updateDateTime();
+            checkOrientation();
+            startCountdown();
+            setupEventListeners();
+            playBackgroundMusic();
+            
+            // 监听横竖屏变化
+            window.addEventListener('resize', checkOrientation);
+            window.addEventListener('orientationchange', checkOrientation);
+        }
+        
+        // 更新日期时间显示
+        function updateDateTime() {
+            const now = new Date();
+            const dateStr = now.toLocaleDateString('zh-CN', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                weekday: 'long'
+            });
+            document.getElementById('dateDisplay').textContent = dateStr;
+        }
+        
+        // 检查屏幕方向
+        function checkOrientation() {
+            const isLandscapeMode = window.innerWidth > window.innerHeight;
+            
+            if (isLandscapeMode !== isLandscape) {
+                isLandscape = isLandscapeMode;
+                
+                if (isLandscape) {
+                    portraitMode.style.display = 'none';
+                    landscapeMode.style.display = 'flex';
+                } else {
+                    portraitMode.style.display = 'flex';
+                    landscapeMode.style.display = 'none';
+                }
+            }
+        }
+        
+        // 开始倒计时
+        function startCountdown() {
+            clearInterval(countdownInterval);
+            
+            countdownInterval = setInterval(() => {
+                const now = new Date();
+                const timeLeft = targetDate - now;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(countdownInterval);
+                    showNewYear();
+                    return;
+                }
+                
+                // 检查是否进入最后10秒
+                if (timeLeft <= 10000 && !finalCountdownStarted) {
+                    startFinalCountdown();
+                }
+                
+                // 检查是否到达23:59:57（最后3秒）
+                if (now.getHours() === 23 && now.getMinutes() === 59 && now.getSeconds() >= 57 && !videoPlayed) {
+                    playVideo();
+                }
+                
+                updateCountdownDisplay(timeLeft);
+            }, 100);
+        }
+        
+        // 更新倒计时显示
+        function updateCountdownDisplay(timeLeft) {
+            const totalSeconds = Math.floor(timeLeft / 1000);
+            const hours = Math.floor(totalSeconds / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
+            
+            // 格式化显示
+            const formatTime = (num) => num.toString().padStart(2, '0');
+            
+            // 更新竖屏显示
+            document.getElementById('hours').textContent = formatTime(hours);
+            document.getElementById('minutes').textContent = formatTime(minutes);
+            document.getElementById('seconds').textContent = formatTime(seconds);
+            
+            // 更新横屏显示
+            document.getElementById('landscapeHours').textContent = formatTime(hours);
+            document.getElementById('landscapeMinutes').textContent = formatTime(minutes);
+            document.getElementById('landscapeSeconds').textContent = formatTime(seconds);
+        }
+        
+        // 开始最后10秒倒计时
+        function startFinalCountdown() {
+            finalCountdownStarted = true;
+            finalScreen.style.opacity = '1';
+            finalScreen.style.pointerEvents = 'auto';
+            
+            let finalSeconds = 10;
+            finalNumber.textContent = finalSeconds;
+            
+            const finalInterval = setInterval(() => {
+                finalSeconds--;
+                
+                if (finalSeconds > 0) {
+                    finalNumber.textContent = finalSeconds;
+                    // 添加震动效果
+                    finalNumber.style.animation = 'none';
+                    setTimeout(() => {
+                        finalNumber.style.animation = 'finalPulse 0.5s infinite alternate';
+                    }, 10);
+                } else {
+                    clearInterval(finalInterval);
+                    finalScreen.style.opacity = '0';
+                    finalScreen.style.pointerEvents = 'none';
+                }
+            }, 1000);
+        }
+        
+        // 播放视频
+        function playVideo() {
+            videoPlayed = true;
+            
+            // 隐藏所有其他元素
+            portraitMode.style.display = 'none';
+            landscapeMode.style.display = 'none';
+            document.querySelector('.controls').style.display = 'none';
+            
+            // 显示视频容器
+            videoContainer.style.display = 'block';
+            
+            // 创建视频元素（使用示例视频）
+            const video = document.createElement('video');
+            video.src = 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp3';
+            video.autoplay = true;
+            video.controls = false;
+            video.muted = false;
+            
+            videoContainer.innerHTML = '';
+            videoContainer.appendChild(video);
+            
+            // 视频结束后的处理
+            video.onended = () => {
+                videoContainer.style.display = 'none';
+                showThanksScreen();
+            };
+        }
+        
+        // 显示谢谢观看
+        function showThanksScreen() {
+            thanksScreen.style.display = 'flex';
+            
+            setTimeout(() => {
+                thanksScreen.style.display = 'none';
+                showBlessings();
+            }, 3000);
+        }
+        
+        // 显示祝福语
+        function showBlessings() {
+            blessingsScreen.style.display = 'flex';
+            let currentBlessing = 0;
+            
+            function showNextBlessing() {
+                if (currentBlessing < blessings.length) {
+                    blessingText.textContent = blessings[currentBlessing];
+                    blessingText.style.animation = 'none';
+                    
+                    setTimeout(() => {
+                        blessingText.style.animation = 'blessingFade 3s forwards';
+                    }, 10);
+                    
+                    currentBlessing++;
+                    
+                    setTimeout(showNextBlessing, 3000);
+                } else {
+                    // 所有祝福语显示完毕，重新开始倒计时
+                    blessingsScreen.style.display = 'none';
+                    resetToCountdown();
+                }
+            }
+            
+            showNextBlessing();
+        }
+        
+        // 重置为倒计时界面
+        function resetToCountdown() {
+            portraitMode.style.display = 'flex';
+            document.querySelector('.controls').style.display = 'flex';
+            finalCountdownStarted = false;
+            videoPlayed = false;
+            
+            // 重新设置目标时间为下一年的新年
+            targetDate = new Date('2026-12-31T23:59:59');
+            startCountdown();
+        }
+        
+        // 显示新年
+        function showNewYear() {
+            if (isLandscape) {
+                landscapeTime.innerHTML = '<span style="color:#ff3366;font-size:64px;">2026</span>';
+                document.querySelector('.landscape-right .status-info').textContent = '新年快乐！';
+            } else {
+                mainTime.innerHTML = '<span style="color:#ff3366;font-size:72px;">2026</span>';
+                document.getElementById('statusInfo').textContent = '新年快乐！';
+            }
+        }
+        
+        // 播放背景音乐
+        function playBackgroundMusic() {
+            backgroundMusic.volume = 0.3;
+            backgroundMusic.play().catch(e => {
+                console.log('自动播放被阻止，等待用户交互');
+            });
+        }
+        
+        // 设置事件监听器
+        function setupEventListeners() {
+            // 切换视图按钮
+            document.getElementById('toggleView').addEventListener('click', () => {
+                isSimpleView = !isSimpleView;
+                document.body.classList.toggle('simple-view', isSimpleView);
+                
+                // 更新按钮文本
+                document.getElementById('toggleView').textContent = 
+                    isSimpleView ? '返回完整视图' : '切换视图';
+            });
+            
+            // 切换横竖屏按钮
+            document.getElementById('toggleOrientation').addEventListener('click', () => {
+                isLandscape = !isLandscape;
+                
+                if (isLandscape) {
+                    portraitMode.style.display = 'none';
+                    landscapeMode.style.display = 'flex';
+                } else {
+                    portraitMode.style.display = 'flex';
+                    landscapeMode.style.display = 'none';
+                }
+            });
+            
+            // 音乐控制
+            musicToggle.addEventListener('click', () => {
+                isMusicPlaying = !isMusicPlaying;
+                
+                if (isMusicPlaying) {
+                    backgroundMusic.play();
+                    musicToggle.textContent = '♪';
+                    musicToggle.style.background = 'rgba(255, 255, 255, 0.2)';
+                } else {
+                    backgroundMusic.pause();
+                    musicToggle.textContent = '🔇';
+                    musicToggle.style.background = 'rgba(255, 0, 0, 0.2)';
+                }
+            });
+            
+            // 点击屏幕任意位置播放音乐（解决自动播放限制）
+            document.addEventListener('click', () => {
+                if (backgroundMusic.paused && isMusicPlaying) {
+                    backgroundMusic.play();
+                }
+            });
+        }
+        
+        // 页面加载完成后初始化
+        window.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
