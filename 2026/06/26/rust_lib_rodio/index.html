@@ -7,16 +7,21 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Eternity">
-<meta property="og:url" content="http://example.com/index.html">
+<meta name="description" content="Rodio是Rust的一个轻量级音频库示例结构体实现1234567891011121314151617181920212223242526272829303132333435363738394041424344use std::&#123;fs::File, time::Duration&#125;;use rodio::&#123;Decoder, MixerDeviceSink, Player">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rust音频库Rodio">
+<meta property="og:url" content="http://example.com/2026/06/26/rust_lib_rodio/index.html">
 <meta property="og:site_name" content="Eternity">
+<meta property="og:description" content="Rodio是Rust的一个轻量级音频库示例结构体实现1234567891011121314151617181920212223242526272829303132333435363738394041424344use std::&#123;fs::File, time::Duration&#125;;use rodio::&#123;Decoder, MixerDeviceSink, Player">
 <meta property="og:locale">
+<meta property="article:published_time" content="2026-06-26T12:35:00.000Z">
+<meta property="article:modified_time" content="2026-06-26T13:19:21.677Z">
 <meta property="article:author" content="ShenEternity">
+<meta property="article:tag" content="编程学习">
 <meta name="twitter:card" content="summary">
 
 
-<title >Eternity</title>
+<title >Rust音频库Rodio</title>
 
 <!-- Favicon -->
 
@@ -55,7 +60,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"ShenEternity","root":"/","typed_text":null,"theme_version":"2.2.7","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","apple_touch_icon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"default","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":false,"isHome":true,"postUpdate":"2026-06-26 21:19:43"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-06-26 21:19:21"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.7" id="trm-switch-style">
@@ -139,7 +144,7 @@
     <nav>
         <ul>
             
-            <li class="menu-item-has-children current-menu-item">
+            <li class="menu-item-has-children ">
                 <a  href="/" target="">
                     首页
                 </a>
@@ -193,7 +198,8 @@
             <!-- top bar end -->
 
             <!-- body -->
-            <div class="trm-content-start">
+            
+<div class="trm-content-start">
     <!-- banner -->
     <div class="trm-banner">
     
@@ -214,10 +220,10 @@
                     <!-- banner title -->
                     <div class="trm-banner-text ">
                         <div class="trm-label trm-mb-20">
-                            Hi my new friend!
+                            NEWS LETTER
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            树深时见鹿，<br>溪午不闻钟。
+                            Rust音频库Rodio
                         </h1>
 
                         
@@ -227,7 +233,7 @@
                                 </li>
                                 <li>
                                     <span>
-                                        index.html
+                                        2026
                                     </span>
                                 </li>
                             </ul>
@@ -313,126 +319,46 @@
             
             <div class="trm-page-content col-lg-8">
                 <div id="trm-content" class="trm-content">
-                    <!-- categories -->
-
-    <div class="row hidden-sm">
-        
-        
-        <div class="col-lg-6">
-            <!-- categories card -->
-<div class="trm-blog-categories trm-scroll-animation">
-    <h6>
-        Dart_学习
-        <span class="trm-number">
-            2
-        </span>
-    </h6>
-    <div class="trm-divider trm-mb-20 trm-mt-20"></div>
-    <a href="/categories/Dart-%E5%AD%A6%E4%B9%A0/." class="trm-label">
-        查看分类 
-        <i class="iconfont fas fa-arrow-right arrow-right"></i>
-    </a>
-</div>
-<!-- categories card end -->
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            06/26
         </div>
-        
-        <div class="col-lg-6">
-            <!-- categories card -->
-<div class="trm-blog-categories trm-scroll-animation">
-    <h6>
-        我的项目
-        <span class="trm-number">
-            1
-        </span>
-    </h6>
-    <div class="trm-divider trm-mb-20 trm-mt-20"></div>
-    <a href="/categories/%E6%88%91%E7%9A%84%E9%A1%B9%E7%9B%AE/." class="trm-label">
-        查看分类 
-        <i class="iconfont fas fa-arrow-right arrow-right"></i>
-    </a>
-</div>
-<!-- categories card end -->
-        </div>
-        
     </div>
-
-<!-- categories end -->
-
-<!-- newest publications -->
-<div class="row">
-    
-        <div class="col-lg-12">
-            <!-- title -->
-            <h5 class="trm-title-with-divider">
-                最近发布 
-                <span data-number="01"></span>
-            </h5>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            20:35
         </div>
-    
-    
-        <div class="col-lg-6">
-    <div class="trm-blog-card trm-scroll-animation">
-        <a href="/2026/06/20/hello/" class="trm-cover-frame trm-anima-link">
-            
-            
-                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
-            
-        </a>
-        
-            <div class="trm-top">置顶</div>
-        
-        <div class="trm-card-descr">
-            <div class="trm-label trm-category trm-mb-20">
-                <a href=" /categories/%E4%B8%AA%E4%BA%BA/">
-                    个人
-                </a>
-            </div>
-            <h5>
-                <a href="/2026/06/20/hello/" class="trm-anima-link">
-                    自我介绍
-                </a>
-            </h5>
-            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
-            <ul class="trm-card-data trm-label">
-                <li>26/06/20</li>
-                <li>20:12</li>
-                
-                
-            </ul>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            ShenEternity
         </div>
     </div>
 </div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h1 id="Rodio是Rust的一个轻量级音频库"><a href="#Rodio是Rust的一个轻量级音频库" class="headerlink" title="Rodio是Rust的一个轻量级音频库"></a>Rodio是Rust的一个轻量级音频库</h1><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="结构体实现"><a href="#结构体实现" class="headerlink" title="结构体实现"></a>结构体实现</h3><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> std::&#123;fs::File, time::Duration&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> rodio::&#123;Decoder, MixerDeviceSink, Player&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">MyPlay</span> &#123;</span><br><span class="line">    _handle: MixerDeviceSink,</span><br><span class="line">    player: Player,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">impl</span> <span class="title class_">MyPlay</span> &#123;</span><br><span class="line">    <span class="keyword">fn</span> <span class="title function_">new</span>() <span class="punctuation">-&gt;</span> <span class="keyword">Self</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="variable">handle</span> = rodio::DeviceSinkBuilder::<span class="title function_ invoke__">open_default_sink</span>().<span class="title function_ invoke__">unwrap</span>();</span><br><span class="line">        <span class="keyword">let</span> <span class="variable">player</span> = rodio::Player::<span class="title function_ invoke__">connect_new</span>(handle.<span class="title function_ invoke__">mixer</span>());</span><br><span class="line">        <span class="keyword">Self</span> &#123;</span><br><span class="line">            _handle: handle,</span><br><span class="line">            player,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">fn</span> <span class="title function_">play_file</span>(&amp;<span class="keyword">self</span>, path: &amp;<span class="type">str</span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="variable">file</span> = File::<span class="title function_ invoke__">open</span>(path).<span class="title function_ invoke__">expect</span>(<span class="string">&quot;Error0&quot;</span>);</span><br><span class="line">        <span class="keyword">let</span> <span class="variable">source</span> = Decoder::<span class="title function_ invoke__">try_from</span>(file).<span class="title function_ invoke__">expect</span>(<span class="string">&quot;Error1&quot;</span>);</span><br><span class="line">        <span class="keyword">self</span>.player.<span class="title function_ invoke__">append</span>(source);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">fn</span> <span class="title function_">pause</span>(&amp;<span class="keyword">self</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.player.<span class="title function_ invoke__">pause</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">fn</span> <span class="title function_">play</span>(&amp;<span class="keyword">self</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.<span class="title function_ invoke__">play</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">fn</span> <span class="title function_">seek</span>(&amp;<span class="keyword">self</span>, num: <span class="type">u64</span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="variable">dr</span> = Duration::<span class="title function_ invoke__">from_secs</span>(num);</span><br><span class="line">        <span class="keyword">self</span>.player.<span class="title function_ invoke__">try_seek</span>(dr).<span class="title function_ invoke__">expect</span>(<span class="string">&quot;Error_seek&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">my_player</span> = MyPlay::<span class="title function_ invoke__">new</span>();</span><br><span class="line">    my_player.<span class="title function_ invoke__">play_file</span>(<span class="string">&quot;/home/eternity/Music/K歌之王.mp3&quot;</span>);</span><br><span class="line">    std::thread::<span class="title function_ invoke__">sleep</span>(Duration::<span class="title function_ invoke__">from_secs</span>(<span class="number">100</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="单main函数实现"><a href="#单main函数实现" class="headerlink" title="单main函数实现"></a>单main函数实现</h3><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">fn</span> <span class="title function_">main</span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">handle</span> = rodio::DeviceSinkBuilder::<span class="title function_ invoke__">open_default_sink</span>()</span><br><span class="line">        .<span class="title function_ invoke__">expect</span>(<span class="string">&quot;Error0&quot;</span>);</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">player</span> = rodio::Player::<span class="title function_ invoke__">connect_new</span>(&amp;handle.<span class="title function_ invoke__">mixer</span>());</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">file</span> = File::<span class="title function_ invoke__">open</span>(<span class="string">&quot;/home/eternity/Music/K歌之王.mp3&quot;</span>).<span class="title function_ invoke__">unwrap</span>();</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">source</span> = Decoder::<span class="title function_ invoke__">try_from</span>(file).<span class="title function_ invoke__">unwrap</span>();</span><br><span class="line">    handle.<span class="title function_ invoke__">mixer</span>().<span class="title function_ invoke__">add</span>(source);</span><br><span class="line">    std::thread::<span class="title function_ invoke__">sleep</span>(Duration::<span class="title function_ invoke__">from_secs</span>(<span class="number">100</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+</article>
     
-        <div class="col-lg-6">
-    <div class="trm-blog-card trm-scroll-animation">
-        <a href="/2026/06/26/rust_lib_rodio/" class="trm-cover-frame trm-anima-link">
-            
-            
-                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
-            
-        </a>
-        
-        <div class="trm-card-descr">
-            <div class="trm-label trm-category trm-mb-20">
-                <a href=" /categories/Rust%E5%BA%93%E6%96%87%E6%A1%A3/">
-                    Rust库文档
-                </a>
-            </div>
-            <h5>
-                <a href="/2026/06/26/rust_lib_rodio/" class="trm-anima-link">
-                    Rust音频库Rodio
-                </a>
-            </h5>
-            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
-            <ul class="trm-card-data trm-label">
-                <li>26/06/26</li>
-                <li>20:35</li>
-                
-                
-            </ul>
-        </div>
-    </div>
+    
+
 </div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            其他文章
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
     
         <div class="col-lg-6">
     <div class="trm-blog-card trm-scroll-animation">
@@ -465,106 +391,10 @@
     </div>
 </div>
     
-        <div class="col-lg-6">
-    <div class="trm-blog-card trm-scroll-animation">
-        <a href="/2026/06/21/dart_study_0/" class="trm-cover-frame trm-anima-link">
-            
-            
-                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
-            
-        </a>
-        
-        <div class="trm-card-descr">
-            <div class="trm-label trm-category trm-mb-20">
-                <a href=" /categories/Dart-%E5%AD%A6%E4%B9%A0/">
-                    Dart_学习
-                </a>
-            </div>
-            <h5>
-                <a href="/2026/06/21/dart_study_0/" class="trm-anima-link">
-                    Dart_学习-P0
-                </a>
-            </h5>
-            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
-            <ul class="trm-card-data trm-label">
-                <li>26/06/21</li>
-                <li>16:35</li>
-                
-                
-            </ul>
-        </div>
-    </div>
 </div>
-    
-        <div class="col-lg-6">
-    <div class="trm-blog-card trm-scroll-animation">
-        <a href="/2026/06/20/py_study_0/" class="trm-cover-frame trm-anima-link">
-            
-            
-                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
-            
-        </a>
-        
-        <div class="trm-card-descr">
-            <div class="trm-label trm-category trm-mb-20">
-                <a href=" /categories/Python-%E5%AD%A6%E4%B9%A0/">
-                    Python_学习
-                </a>
-            </div>
-            <h5>
-                <a href="/2026/06/20/py_study_0/" class="trm-anima-link">
-                    Python_学习-P0
-                </a>
-            </h5>
-            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
-            <ul class="trm-card-data trm-label">
-                <li>26/06/20</li>
-                <li>20:35</li>
-                
-                
-            </ul>
-        </div>
-    </div>
-</div>
-    
-        <div class="col-lg-6">
-    <div class="trm-blog-card trm-scroll-animation">
-        <a href="/2026/06/20/eternity_music/" class="trm-cover-frame trm-anima-link">
-            
-            
-                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
-            
-        </a>
-        
-        <div class="trm-card-descr">
-            <div class="trm-label trm-category trm-mb-20">
-                <a href=" /categories/%E6%88%91%E7%9A%84%E9%A1%B9%E7%9B%AE/">
-                    我的项目
-                </a>
-            </div>
-            <h5>
-                <a href="/2026/06/20/eternity_music/" class="trm-anima-link">
-                    Eternity_Music(跨平台本地音乐播放器)
-                </a>
-            </h5>
-            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
-            <ul class="trm-card-data trm-label">
-                <li>26/06/20</li>
-                <li>20:22</li>
-                
-                
-            </ul>
-        </div>
-    </div>
-</div>
-    
-</div>
-<!-- newest publications end -->
 
+    
 
-    <div class="trm-pagination">
-        <span class="page-number current">1</span>
-    </div>
 
 
                     <div class="trm-divider footer-divider"></div>
@@ -609,6 +439,10 @@
 <div class="trm-fixed-container">
     
     
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
     
     <div id="trm-back-top" class="trm-fixed-btn" data-title="回到顶部">
         <i class="iconfont fas fa-arrow-up"></i>
@@ -640,6 +474,10 @@
     
 
     <!-- 评论插件 -->
+    
+        
+
+        
     
 
 		
