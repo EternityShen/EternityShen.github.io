@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="Flutter 常用组件速查表按功能分类整理 Flutter 常用 Widget，包含作用、基本用法示例、核心参数及参数说明，方便查阅。 一、文本与图标类   组件名 作用 使用方法示例 核心参数 参数作用    Text 显示一段文本 Text(&#39;Hello&#39;, style: TextStyle(fontSize: 18)) datastyletextAlignmaxLineso">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flutter_Widget_速查表">
+<meta property="og:url" content="http://example.com/2026/07/09/flutter_widget/index.html">
+<meta property="og:site_name" content="Eternity">
+<meta property="og:description" content="Flutter 常用组件速查表按功能分类整理 Flutter 常用 Widget，包含作用、基本用法示例、核心参数及参数说明，方便查阅。 一、文本与图标类   组件名 作用 使用方法示例 核心参数 参数作用    Text 显示一段文本 Text(&#39;Hello&#39;, style: TextStyle(fontSize: 18)) datastyletextAlignmaxLineso">
+<meta property="og:locale">
+<meta property="article:published_time" content="2026-07-09T11:35:00.000Z">
+<meta property="article:modified_time" content="2026-07-09T11:22:48.544Z">
+<meta property="article:author" content="ShenEternity">
+<meta property="article:tag" content="编程学习">
+<meta name="twitter:card" content="summary">
+
+
+<title >Flutter_Widget_速查表</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon.svg?v=2.2.7' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon.svg?v=2.2.7' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"ShenEternity","root":"/","typed_text":null,"theme_version":"2.2.7","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","apple_touch_icon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"default","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-07-09 19:22:48"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.7" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 8.1.2"></head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/favicon.svg">
+    
+    
+        <div class="trm-logo-text">
+            Shen<span>Eternity</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories" target="">
+                    分类
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/tags" target="">
+                    标签
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner cover -->
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="/img/banner.png">
+    <!-- banner cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            Flutter_Widget_速查表
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2026
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        ShenEternity
+    </h5>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com/EternityShen" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                Residence:
+            </div>
+            <div class="trm-label trm-label-light">
+                Eternity
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:ShenEternity2008@outlook.com" class="trm-btn">
+            联系我
+            <i class="iconfont far fa-envelope"></i>
+        </a>
+    </div>
+    <!-- action button end -->
+
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            07/09
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            19:35
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            ShenEternity
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h1 id="Flutter-常用组件速查表"><a href="#Flutter-常用组件速查表" class="headerlink" title="Flutter 常用组件速查表"></a>Flutter 常用组件速查表</h1><h3 id="按功能分类整理-Flutter-常用-Widget，包含作用、基本用法示例、核心参数及参数说明，方便查阅。"><a href="#按功能分类整理-Flutter-常用-Widget，包含作用、基本用法示例、核心参数及参数说明，方便查阅。" class="headerlink" title="按功能分类整理 Flutter 常用 Widget，包含作用、基本用法示例、核心参数及参数说明，方便查阅。"></a>按功能分类整理 Flutter 常用 Widget，包含作用、基本用法示例、核心参数及参数说明，方便查阅。</h3><hr>
+<h2 id="一、文本与图标类"><a href="#一、文本与图标类" class="headerlink" title="一、文本与图标类"></a>一、文本与图标类</h2><table>
+<thead>
+<tr>
+<th>组件名</th>
+<th>作用</th>
+<th>使用方法示例</th>
+<th>核心参数</th>
+<th>参数作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Text</strong></td>
+<td>显示一段文本</td>
+<td><code>Text(&#39;Hello&#39;, style: TextStyle(fontSize: 18))</code></td>
+<td><code>data</code><br><code>style</code><br><code>textAlign</code><br><code>maxLines</code><br><code>overflow</code></td>
+<td>显示的字符串<br>字体样式（颜色&#x2F;大小&#x2F;粗细等）<br>文本对齐方式<br>最大显示行数<br>超出后的处理方式（省略号&#x2F;裁剪等）</td>
+</tr>
+<tr>
+<td><strong>RichText</strong></td>
+<td>显示多种样式混排的文本</td>
+<td><code>RichText(text: TextSpan(children: [...]))</code></td>
+<td><code>text</code><br><code>textAlign</code></td>
+<td>一个 <code>InlineSpan</code>（通常是 <code>TextSpan</code>），可嵌套不同样式的子文本<br>整体对齐方式</td>
+</tr>
+<tr>
+<td><strong>Icon</strong></td>
+<td>显示图标</td>
+<td><code>Icon(Icons.home, size: 24, color: Colors.blue)</code></td>
+<td><code>icon</code><br><code>size</code><br><code>color</code></td>
+<td>指定图标数据（如 <code>Icons.home</code>）<br>图标大小<br>图标颜色</td>
+</tr>
+<tr>
+<td><strong>Image</strong></td>
+<td>显示图片</td>
+<td><code>Image.network(&#39;url&#39;)</code> &#x2F; <code>Image.asset(&#39;path&#39;)</code></td>
+<td><code>image</code>&#x2F;构造方式<br><code>fit</code><br><code>width</code> &#x2F; <code>height</code><br><code>errorBuilder</code></td>
+<td>图片来源（网络&#x2F;本地&#x2F;内存）<br>图片适应方式（cover&#x2F;contain 等）<br>图片显示宽高<br>加载失败时的占位组件</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="二、布局类"><a href="#二、布局类" class="headerlink" title="二、布局类"></a>二、布局类</h2><table>
+<thead>
+<tr>
+<th>组件名</th>
+<th>作用</th>
+<th>使用方法示例</th>
+<th>核心参数</th>
+<th>参数作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Container</strong></td>
+<td>通用容器，可设置尺寸、边距、装饰、背景等</td>
+<td><code>Container(padding: EdgeInsets.all(8), color: Colors.grey, child: Text(&#39;A&#39;))</code></td>
+<td><code>child</code><br><code>padding</code> &#x2F; <code>margin</code><br><code>color</code> &#x2F; <code>decoration</code><br><code>width</code> &#x2F; <code>height</code><br><code>alignment</code></td>
+<td>子组件<br>内边距&#x2F;外边距<br>背景色&#x2F;装饰（边框、圆角、渐变等）<br>容器宽高<br>子组件在容器内的对齐方式</td>
+</tr>
+<tr>
+<td><strong>Row</strong></td>
+<td>水平方向排列子组件</td>
+<td><code>Row(children: [Text(&#39;A&#39;), Text(&#39;B&#39;)])</code></td>
+<td><code>children</code><br><code>mainAxisAlignment</code><br><code>crossAxisAlignment</code><br><code>mainAxisSize</code></td>
+<td>子组件列表<br>主轴（水平）对齐方式<br>交叉轴（垂直）对齐方式<br>主轴尺寸是否占满</td>
+</tr>
+<tr>
+<td><strong>Column</strong></td>
+<td>垂直方向排列子组件</td>
+<td><code>Column(children: [Text(&#39;A&#39;), Text(&#39;B&#39;)])</code></td>
+<td>同 Row（主轴方向为垂直）</td>
+<td>同 Row</td>
+</tr>
+<tr>
+<td><strong>Stack</strong></td>
+<td>层叠布局，子组件按顺序堆叠</td>
+<td><code>Stack(children: [Image(...), Positioned(...)])</code></td>
+<td><code>children</code><br><code>alignment</code><br><code>fit</code></td>
+<td>层叠的子组件<br>未定位子组件的对齐方式<br>非定位子组件如何适应 Stack 尺寸</td>
+</tr>
+<tr>
+<td><strong>Positioned</strong></td>
+<td>在 Stack 中精确定位子组件</td>
+<td><code>Positioned(top: 10, left: 10, child: Text(&#39;A&#39;))</code></td>
+<td><code>top</code>&#x2F;<code>bottom</code>&#x2F;<code>left</code>&#x2F;<code>right</code><br><code>width</code>&#x2F;<code>height</code></td>
+<td>距父级 Stack 各边的距离<br>子组件宽高</td>
+</tr>
+<tr>
+<td><strong>Expanded</strong></td>
+<td>让子组件按比例填满 Row&#x2F;Column 剩余空间</td>
+<td><code>Expanded(flex: 2, child: Container())</code></td>
+<td><code>flex</code><br><code>child</code></td>
+<td>占用剩余空间的比例权重<br>子组件</td>
+</tr>
+<tr>
+<td><strong>Flexible</strong></td>
+<td>让子组件在 Row&#x2F;Column 中按需伸缩（不强制占满）</td>
+<td><code>Flexible(child: Text(&#39;A&#39;))</code></td>
+<td><code>flex</code><br><code>fit</code><br><code>child</code></td>
+<td>弹性权重<br><code>FlexFit.tight</code>（占满）或 <code>loose</code>（按需）<br>子组件</td>
+</tr>
+<tr>
+<td><strong>Padding</strong></td>
+<td>给子组件添加内边距</td>
+<td><code>Padding(padding: EdgeInsets.all(16), child: Text(&#39;A&#39;))</code></td>
+<td><code>padding</code><br><code>child</code></td>
+<td>四周或指定方向的间距<br>子组件</td>
+</tr>
+<tr>
+<td><strong>Center</strong></td>
+<td>将子组件居中显示</td>
+<td><code>Center(child: Text(&#39;A&#39;))</code></td>
+<td><code>child</code><br><code>widthFactor</code>&#x2F;<code>heightFactor</code></td>
+<td>子组件<br>按子组件尺寸的倍数确定 Center 自身尺寸</td>
+</tr>
+<tr>
+<td><strong>Align</strong></td>
+<td>按指定对齐方式摆放子组件</td>
+<td><code>Align(alignment: Alignment.topRight, child: Text(&#39;A&#39;))</code></td>
+<td><code>alignment</code><br><code>child</code></td>
+<td>对齐位置（如 topRight、center 等）<br>子组件</td>
+</tr>
+<tr>
+<td><strong>SizedBox</strong></td>
+<td>固定尺寸的空白或包裹容器</td>
+<td><code>SizedBox(width: 20, height: 20)</code></td>
+<td><code>width</code><br><code>height</code><br><code>child</code></td>
+<td>固定宽度<br>固定高度<br>可选的子组件</td>
+</tr>
+<tr>
+<td><strong>Wrap</strong></td>
+<td>自动换行的流式布局</td>
+<td><code>Wrap(spacing: 8, children: [...])</code></td>
+<td><code>direction</code><br><code>spacing</code><br><code>runSpacing</code><br><code>children</code></td>
+<td>主轴方向（水平&#x2F;垂直）<br>同一行内子项间距<br>换行后行与行之间的间距<br>子组件列表</td>
+</tr>
+<tr>
+<td><strong>AspectRatio</strong></td>
+<td>按宽高比约束子组件</td>
+<td><code>AspectRatio(aspectRatio: 16/9, child: Container())</code></td>
+<td><code>aspectRatio</code><br><code>child</code></td>
+<td>宽高比数值<br>子组件</td>
+</tr>
+<tr>
+<td><strong>ConstrainedBox</strong></td>
+<td>对子组件施加最大&#x2F;最小尺寸约束</td>
+<td><code>ConstrainedBox(constraints: BoxConstraints(minHeight: 50), child: Text(&#39;A&#39;))</code></td>
+<td><code>constraints</code><br><code>child</code></td>
+<td><code>BoxConstraints</code>（最小&#x2F;最大宽高）<br>子组件</td>
+</tr>
+<tr>
+<td><strong>SafeArea</strong></td>
+<td>避开系统状态栏、刘海屏等安全区域</td>
+<td><code>SafeArea(child: Scaffold(...))</code></td>
+<td><code>top</code>&#x2F;<code>bottom</code>&#x2F;<code>left</code>&#x2F;<code>right</code><br><code>child</code></td>
+<td>是否在对应方向避让<br>子组件</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="三、按钮类"><a href="#三、按钮类" class="headerlink" title="三、按钮类"></a>三、按钮类</h2><table>
+<thead>
+<tr>
+<th>组件名</th>
+<th>作用</th>
+<th>使用方法示例</th>
+<th>核心参数</th>
+<th>参数作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>ElevatedButton</strong></td>
+<td>带阴影的凸起按钮，用于主要操作</td>
+<td><code>ElevatedButton(onPressed: (){}, child: Text(&#39;确定&#39;))</code></td>
+<td><code>onPressed</code><br><code>style</code><br><code>child</code></td>
+<td>点击回调（为 null 时按钮禁用）<br>按钮样式（颜色、圆角、内边距等）<br>按钮内容</td>
+</tr>
+<tr>
+<td><strong>TextButton</strong></td>
+<td>无背景的文字按钮，用于次要操作</td>
+<td><code>TextButton(onPressed: (){}, child: Text(&#39;取消&#39;))</code></td>
+<td><code>onPressed</code><br><code>style</code><br><code>child</code></td>
+<td>同上</td>
+</tr>
+<tr>
+<td><strong>OutlinedButton</strong></td>
+<td>带边框、无填充背景的按钮</td>
+<td><code>OutlinedButton(onPressed: (){}, child: Text(&#39;查看&#39;))</code></td>
+<td><code>onPressed</code><br><code>style</code><br><code>child</code></td>
+<td>同上</td>
+</tr>
+<tr>
+<td><strong>IconButton</strong></td>
+<td>可点击的图标按钮</td>
+<td><code>IconButton(icon: Icon(Icons.add), onPressed: (){})</code></td>
+<td><code>icon</code><br><code>onPressed</code><br><code>tooltip</code></td>
+<td>显示的图标<br>点击回调<br>长按时提示文字</td>
+</tr>
+<tr>
+<td><strong>FloatingActionButton</strong></td>
+<td>悬浮操作按钮，常用于页面主操作</td>
+<td><code>FloatingActionButton(onPressed: (){}, child: Icon(Icons.add))</code></td>
+<td><code>onPressed</code><br><code>child</code><br><code>backgroundColor</code></td>
+<td>点击回调<br>按钮内容（通常是图标）<br>背景色</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="四、输入与表单类"><a href="#四、输入与表单类" class="headerlink" title="四、输入与表单类"></a>四、输入与表单类</h2><table>
+<thead>
+<tr>
+<th>组件名</th>
+<th>作用</th>
+<th>使用方法示例</th>
+<th>核心参数</th>
+<th>参数作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>TextField</strong></td>
+<td>单行&#x2F;多行文本输入框</td>
+<td><code>TextField(controller: _c, decoration: InputDecoration(labelText: &#39;姓名&#39;))</code></td>
+<td><code>controller</code><br><code>decoration</code><br><code>onChanged</code><br><code>obscureText</code><br><code>keyboardType</code></td>
+<td>控制输入内容的控制器<br>输入框外观（标签、提示、边框等）<br>内容变化回调<br>是否隐藏输入内容（密码框）<br>指定弹出的键盘类型</td>
+</tr>
+<tr>
+<td><strong>TextFormField</strong></td>
+<td>带表单校验功能的文本输入框</td>
+<td><code>TextFormField(validator: (v) =&gt; v!.isEmpty ? &#39;不能为空&#39; : null)</code></td>
+<td><code>validator</code><br><code>onSaved</code><br><code>decoration</code></td>
+<td>校验函数，返回错误信息或 null<br>表单保存时的回调<br>输入框外观</td>
+</tr>
+<tr>
+<td><strong>Form</strong></td>
+<td>表单容器，统一管理校验与提交</td>
+<td><code>Form(key: _formKey, child: Column(children: [...]))</code></td>
+<td><code>key</code><br><code>autovalidateMode</code><br><code>child</code></td>
+<td>通过 GlobalKey 控制表单状态（校验&#x2F;保存）<br>自动校验时机<br>表单内容</td>
+</tr>
+<tr>
+<td><strong>Checkbox</strong></td>
+<td>复选框</td>
+<td><code>Checkbox(value: checked, onChanged: (v) =&gt; setState(() =&gt; checked = v!))</code></td>
+<td><code>value</code><br><code>onChanged</code></td>
+<td>是否选中<br>状态变化回调</td>
+</tr>
+<tr>
+<td><strong>Radio</strong></td>
+<td>单选按钮</td>
+<td><code>Radio(value: 1, groupValue: selected, onChanged: (v) {})</code></td>
+<td><code>value</code><br><code>groupValue</code><br><code>onChanged</code></td>
+<td>当前选项值<br>当前选中的值（用于比较）<br>选中变化回调</td>
+</tr>
+<tr>
+<td><strong>Switch</strong></td>
+<td>开关切换控件</td>
+<td><code>Switch(value: isOn, onChanged: (v) {})</code></td>
+<td><code>value</code><br><code>onChanged</code></td>
+<td>当前开关状态<br>状态变化回调</td>
+</tr>
+<tr>
+<td><strong>Slider</strong></td>
+<td>滑动条</td>
+<td><code>Slider(value: v, min: 0, max: 100, onChanged: (v) {})</code></td>
+<td><code>value</code><br><code>min</code>&#x2F;<code>max</code><br><code>onChanged</code></td>
+<td>当前值<br>取值范围<br>滑动变化回调</td>
+</tr>
+<tr>
+<td><strong>DropdownButton</strong></td>
+<td>下拉选择框</td>
+<td><code>DropdownButton(value: v, items: [...], onChanged: (v) {})</code></td>
+<td><code>value</code><br><code>items</code><br><code>onChanged</code></td>
+<td>当前选中项<br>下拉选项列表（<code>DropdownMenuItem</code>）<br>选中变化回调</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="五、列表与滚动类"><a href="#五、列表与滚动类" class="headerlink" title="五、列表与滚动类"></a>五、列表与滚动类</h2><table>
+<thead>
+<tr>
+<th>组件名</th>
+<th>作用</th>
+<th>使用方法示例</th>
+<th>核心参数</th>
+<th>参数作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>ListView</strong></td>
+<td>可滚动的列表</td>
+<td><code>ListView(children: [...])</code> &#x2F; <code>ListView.builder(itemCount: n, itemBuilder: ...)</code></td>
+<td><code>children</code><br><code>itemBuilder</code> + <code>itemCount</code>（builder 模式）<br><code>scrollDirection</code><br><code>shrinkWrap</code></td>
+<td>直接子组件列表（少量数据）<br>按需构建列表项（大量&#x2F;动态数据）<br>滚动方向<br>是否根据内容自适应高度</td>
+</tr>
+<tr>
+<td><strong>GridView</strong></td>
+<td>网格布局的可滚动列表</td>
+<td><code>GridView.count(crossAxisCount: 2, children: [...])</code></td>
+<td><code>crossAxisCount</code><br><code>gridDelegate</code><br><code>itemBuilder</code></td>
+<td>每行&#x2F;列的网格数量<br>自定义网格排列规则<br>按需构建网格项</td>
+</tr>
+<tr>
+<td><strong>SingleChildScrollView</strong></td>
+<td>让单个子组件可滚动</td>
+<td><code>SingleChildScrollView(child: Column(children: [...]))</code></td>
+<td><code>child</code><br><code>scrollDirection</code></td>
+<td>唯一子组件<br>滚动方向</td>
+</tr>
+<tr>
+<td><strong>PageView</strong></td>
+<td>左右&#x2F;上下滑动切换页面</td>
+<td><code>PageView(children: [Page1(), Page2()])</code></td>
+<td><code>children</code><br><code>controller</code><br><code>onPageChanged</code></td>
+<td>各页面内容<br>控制页面跳转的控制器<br>页面切换回调</td>
+</tr>
+<tr>
+<td><strong>CustomScrollView</strong></td>
+<td>结合多种 Sliver 组件的复合滚动视图</td>
+<td><code>CustomScrollView(slivers: [SliverAppBar(...), SliverList(...)])</code></td>
+<td><code>slivers</code></td>
+<td>可滚动的 Sliver 组件集合，如 <code>SliverAppBar</code>、<code>SliverList</code>、<code>SliverGrid</code></td>
+</tr>
+<tr>
+<td><strong>RefreshIndicator</strong></td>
+<td>下拉刷新</td>
+<td><code>RefreshIndicator(onRefresh: _refresh, child: ListView(...))</code></td>
+<td><code>onRefresh</code><br><code>child</code></td>
+<td>下拉触发的异步刷新回调<br>可滚动的子组件</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="六、Material-结构类"><a href="#六、Material-结构类" class="headerlink" title="六、Material 结构类"></a>六、Material 结构类</h2><table>
+<thead>
+<tr>
+<th>组件名</th>
+<th>作用</th>
+<th>使用方法示例</th>
+<th>核心参数</th>
+<th>参数作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Scaffold</strong></td>
+<td>页面骨架，提供标准 Material 页面结构</td>
+<td><code>Scaffold(appBar: AppBar(...), body: ..., floatingActionButton: ...)</code></td>
+<td><code>appBar</code><br><code>body</code><br><code>floatingActionButton</code><br><code>drawer</code><br><code>bottomNavigationBar</code></td>
+<td>顶部导航栏<br>页面主体内容<br>悬浮按钮<br>侧边抽屉菜单<br>底部导航栏</td>
+</tr>
+<tr>
+<td><strong>AppBar</strong></td>
+<td>顶部应用栏</td>
+<td><code>AppBar(title: Text(&#39;标题&#39;), actions: [...])</code></td>
+<td><code>title</code><br><code>actions</code><br><code>leading</code><br><code>backgroundColor</code></td>
+<td>标题组件<br>右侧操作按钮列表<br>左侧图标（常为返回&#x2F;菜单按钮）<br>背景色</td>
+</tr>
+<tr>
+<td><strong>Card</strong></td>
+<td>带圆角和阴影的卡片容器</td>
+<td><code>Card(child: ListTile(...))</code></td>
+<td><code>child</code><br><code>elevation</code><br><code>shape</code></td>
+<td>卡片内容<br>阴影高度<br>卡片形状（如圆角）</td>
+</tr>
+<tr>
+<td><strong>ListTile</strong></td>
+<td>标准列表项布局（图标+标题+副标题+尾部）</td>
+<td><code>ListTile(leading: Icon(Icons.person), title: Text(&#39;张三&#39;), onTap: (){})</code></td>
+<td><code>leading</code><br><code>title</code><br><code>subtitle</code><br><code>trailing</code><br><code>onTap</code></td>
+<td>左侧图标&#x2F;头像<br>主标题<br>副标题<br>右侧内容（如箭头&#x2F;开关）<br>点击回调</td>
+</tr>
+<tr>
+<td><strong>Divider</strong></td>
+<td>分割线</td>
+<td><code>Divider(height: 1, color: Colors.grey)</code></td>
+<td><code>height</code><br><code>thickness</code><br><code>color</code></td>
+<td>分割线占用的高度<br>线条粗细<br>颜色</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="七、导航与路由类"><a href="#七、导航与路由类" class="headerlink" title="七、导航与路由类"></a>七、导航与路由类</h2><table>
+<thead>
+<tr>
+<th>组件名</th>
+<th>作用</th>
+<th>使用方法示例</th>
+<th>核心参数</th>
+<th>参数作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Navigator</strong></td>
+<td>管理路由栈，实现页面跳转</td>
+<td><code>Navigator.push(context, MaterialPageRoute(builder: (_) =&gt; NextPage()))</code></td>
+<td><code>push</code>&#x2F;<code>pop</code><br><code>builder</code></td>
+<td>入栈&#x2F;出栈操作<br>构建目标页面的函数</td>
+</tr>
+<tr>
+<td><strong>MaterialPageRoute</strong></td>
+<td>定义一个带 Material 转场动画的路由</td>
+<td>见上</td>
+<td><code>builder</code><br><code>settings</code></td>
+<td>构建页面的函数<br>路由配置（如路由名）</td>
+</tr>
+<tr>
+<td><strong>BottomNavigationBar</strong></td>
+<td>底部导航栏，用于多页面切换</td>
+<td><code>BottomNavigationBar(items: [...], currentIndex: i, onTap: (i) {})</code></td>
+<td><code>items</code><br><code>currentIndex</code><br><code>onTap</code></td>
+<td>导航项列表（图标+文字）<br>当前选中项索引<br>点击切换回调</td>
+</tr>
+<tr>
+<td><strong>Drawer</strong></td>
+<td>侧边抽屉菜单</td>
+<td><code>Drawer(child: ListView(children: [...]))</code></td>
+<td><code>child</code></td>
+<td>抽屉内容</td>
+</tr>
+<tr>
+<td><strong>TabBar &#x2F; TabBarView</strong></td>
+<td>顶部标签页切换</td>
+<td><code>TabBar(tabs: [...])</code> + <code>TabBarView(children: [...])</code></td>
+<td><code>tabs</code>&#x2F;<code>children</code><br><code>controller</code></td>
+<td>标签列表&#x2F;对应页面内容<br><code>TabController</code>，同步标签与内容</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="八、对话框与提示类"><a href="#八、对话框与提示类" class="headerlink" title="八、对话框与提示类"></a>八、对话框与提示类</h2><table>
+<thead>
+<tr>
+<th>组件名</th>
+<th>作用</th>
+<th>使用方法示例</th>
+<th>核心参数</th>
+<th>参数作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>AlertDialog</strong></td>
+<td>弹出提示对话框</td>
+<td><code>showDialog(context: context, builder: (_) =&gt; AlertDialog(title: Text(&#39;提示&#39;), actions: [...]))</code></td>
+<td><code>title</code><br><code>content</code><br><code>actions</code></td>
+<td>对话框标题<br>对话框正文<br>底部操作按钮列表</td>
+</tr>
+<tr>
+<td><strong>SnackBar</strong></td>
+<td>底部短暂提示条</td>
+<td><code>ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(&#39;已保存&#39;)))</code></td>
+<td><code>content</code><br><code>duration</code><br><code>action</code></td>
+<td>提示内容<br>显示时长<br>附带的操作按钮</td>
+</tr>
+<tr>
+<td><strong>showModalBottomSheet</strong></td>
+<td>从底部弹出的面板</td>
+<td><code>showModalBottomSheet(context: context, builder: (_) =&gt; Container(...))</code></td>
+<td><code>builder</code><br><code>isScrollControlled</code></td>
+<td>构建面板内容<br>是否允许面板占满全屏并可滚动</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="九、手势与交互类"><a href="#九、手势与交互类" class="headerlink" title="九、手势与交互类"></a>九、手势与交互类</h2><table>
+<thead>
+<tr>
+<th>组件名</th>
+<th>作用</th>
+<th>使用方法示例</th>
+<th>核心参数</th>
+<th>参数作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>GestureDetector</strong></td>
+<td>监听各种手势（点击、拖动、缩放等）</td>
+<td><code>GestureDetector(onTap: (){}, child: Container())</code></td>
+<td><code>onTap</code><br><code>onLongPress</code><br><code>onPanUpdate</code><br><code>child</code></td>
+<td>点击回调<br>长按回调<br>拖动过程回调<br>子组件</td>
+</tr>
+<tr>
+<td><strong>InkWell</strong></td>
+<td>带水波纹点击效果的可点击区域</td>
+<td><code>InkWell(onTap: (){}, child: Text(&#39;点击&#39;))</code></td>
+<td><code>onTap</code><br><code>splashColor</code><br><code>child</code></td>
+<td>点击回调<br>水波纹颜色<br>子组件</td>
+</tr>
+<tr>
+<td><strong>Dismissible</strong></td>
+<td>可滑动删除&#x2F;移除的组件</td>
+<td><code>Dismissible(key: key, onDismissed: (dir) {}, child: ListTile(...))</code></td>
+<td><code>key</code><br><code>onDismissed</code><br><code>direction</code></td>
+<td>唯一标识<br>滑动移除后的回调<br>允许滑动的方向</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="十、动画类"><a href="#十、动画类" class="headerlink" title="十、动画类"></a>十、动画类</h2><table>
+<thead>
+<tr>
+<th>组件名</th>
+<th>作用</th>
+<th>使用方法示例</th>
+<th>核心参数</th>
+<th>参数作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>AnimatedContainer</strong></td>
+<td>属性变化时自动过渡动画的容器</td>
+<td><code>AnimatedContainer(duration: Duration(milliseconds: 300), color: c, width: w)</code></td>
+<td><code>duration</code><br><code>curve</code><br>其他 Container 属性</td>
+<td>动画时长<br>动画曲线（缓动效果）<br>颜色&#x2F;尺寸等变化后自动补间</td>
+</tr>
+<tr>
+<td><strong>AnimatedOpacity</strong></td>
+<td>透明度渐变动画</td>
+<td><code>AnimatedOpacity(opacity: visible ? 1 : 0, duration: Duration(milliseconds: 300), child: ...)</code></td>
+<td><code>opacity</code><br><code>duration</code><br><code>child</code></td>
+<td>目标透明度<br>动画时长<br>子组件</td>
+</tr>
+<tr>
+<td><strong>Hero</strong></td>
+<td>页面跳转时的共享元素过渡动画</td>
+<td><code>Hero(tag: &#39;avatar&#39;, child: Image(...))</code></td>
+<td><code>tag</code><br><code>child</code></td>
+<td>唯一标识，两个页面需一致才能匹配动画<br>要过渡的组件</td>
+</tr>
+<tr>
+<td><strong>FadeTransition &#x2F; SlideTransition</strong></td>
+<td>基于 AnimationController 的显式渐隐&#x2F;位移动画</td>
+<td><code>FadeTransition(opacity: animation, child: ...)</code></td>
+<td><code>opacity</code>&#x2F;<code>position</code><br><code>child</code></td>
+<td>绑定的动画对象<br>子组件</td>
+</tr>
+<tr>
+<td><strong>AnimatedBuilder</strong></td>
+<td>自定义动画的通用构建器</td>
+<td><code>AnimatedBuilder(animation: controller, builder: (ctx, child) =&gt; ...)</code></td>
+<td><code>animation</code><br><code>builder</code><br><code>child</code></td>
+<td>监听的动画对象<br>每帧重建的构建函数<br>不随动画重建的静态子组件（性能优化）</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="十一、状态管理-数据驱动类"><a href="#十一、状态管理-数据驱动类" class="headerlink" title="十一、状态管理 &#x2F; 数据驱动类"></a>十一、状态管理 &#x2F; 数据驱动类</h2><table>
+<thead>
+<tr>
+<th>组件名</th>
+<th>作用</th>
+<th>使用方法示例</th>
+<th>核心参数</th>
+<th>参数作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>StatelessWidget</strong></td>
+<td>无内部状态的静态组件基类</td>
+<td><code>class MyWidget extends StatelessWidget { Widget build(context) =&gt; ...; }</code></td>
+<td><code>build(context)</code></td>
+<td>描述界面的方法，返回子组件树</td>
+</tr>
+<tr>
+<td><strong>StatefulWidget</strong></td>
+<td>有内部可变状态的组件基类</td>
+<td><code>class MyWidget extends StatefulWidget { ... State createState() =&gt; ...; }</code></td>
+<td><code>createState()</code><br><code>setState()</code>（在 State 中）</td>
+<td>创建关联的 State 对象<br>触发界面重建</td>
+</tr>
+<tr>
+<td><strong>FutureBuilder</strong></td>
+<td>根据 Future 异步结果构建界面</td>
+<td><code>FutureBuilder(future: fetchData(), builder: (ctx, snapshot) =&gt; ...)</code></td>
+<td><code>future</code><br><code>builder</code></td>
+<td>要监听的异步任务<br>根据快照状态（等待&#x2F;完成&#x2F;出错）构建界面</td>
+</tr>
+<tr>
+<td><strong>StreamBuilder</strong></td>
+<td>根据 Stream 数据流构建界面</td>
+<td><code>StreamBuilder(stream: myStream, builder: (ctx, snapshot) =&gt; ...)</code></td>
+<td><code>stream</code><br><code>builder</code><br><code>initialData</code></td>
+<td>要监听的数据流<br>根据最新数据构建界面<br>初始默认数据</td>
+</tr>
+<tr>
+<td><strong>ValueListenableBuilder</strong></td>
+<td>监听 ValueNotifier 变化并局部刷新界面</td>
+<td><code>ValueListenableBuilder(valueListenable: notifier, builder: (ctx, value, child) =&gt; ...)</code></td>
+<td><code>valueListenable</code><br><code>builder</code></td>
+<td>被监听的 <code>ValueNotifier</code><br>值变化时重建界面的函数</td>
+</tr>
+<tr>
+<td><strong>InheritedWidget</strong></td>
+<td>在组件树中向下高效共享数据</td>
+<td><code>class MyData extends InheritedWidget { ... }</code></td>
+<td><code>updateShouldNotify</code><br><code>child</code></td>
+<td>判断是否需要通知依赖者重建<br>子组件树</td>
+</tr>
+</tbody></table>
+<hr>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            其他文章
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2026/06/26/rust_lib_rodio/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/Rust%E5%BA%93%E6%96%87%E6%A1%A3/">
+                    Rust库文档
+                </a>
+            </div>
+            <h5>
+                <a href="/2026/06/26/rust_lib_rodio/" class="trm-anima-link">
+                    Rust音频库Rodio
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>26/06/26</li>
+                <li>20:35</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v8.1.2
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                主题 - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.7
+            </span>
+        </div>
+      
+
+     
+
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+            
+<div class="trm-fixed-container">
+    
+    
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="回到顶部">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.7"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>
